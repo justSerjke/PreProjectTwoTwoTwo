@@ -5,7 +5,7 @@ import web.controller.CarController;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarServiceImpl {
+public class CarService {
 
     public static List<Car> getCountOfCars(Integer count) {
         List<Car> result = CarController.getCars();

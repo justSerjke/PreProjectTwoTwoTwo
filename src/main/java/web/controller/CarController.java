@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import service.CarServiceImpl;
+import service.CarService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class CarController {
         if (count == null) {
             model.addAttribute("cars", getCars());
         } else {
-            model.addAttribute("cars", CarServiceImpl.getCountOfCars(Integer.valueOf(count)));
+            model.addAttribute("cars", CarService.getCountOfCars(Integer.valueOf(count)));
         }
         return "cars";
     }
