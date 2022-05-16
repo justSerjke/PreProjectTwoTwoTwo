@@ -1,4 +1,4 @@
-package model;
+package ru.justserjke.model;
 
 public class Car {
     private String model;

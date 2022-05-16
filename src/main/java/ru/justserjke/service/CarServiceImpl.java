@@ -1,7 +1,7 @@
-package service;
+package ru.justserjke.service;
 
-import dao.CarDAO;
-import model.Car;
+import ru.justserjke.dao.CarDAO;
+import ru.justserjke.model.Car;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
