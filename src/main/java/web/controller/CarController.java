@@ -1,36 +1,27 @@
 package web.controller;
 
-import model.Car;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import service.CarService;
-
-import java.util.ArrayList;
-import java.util.List;
+import service.CarServiceImpl;
 
 @Controller
 public class CarController {
 
-    public static List<Car> getCars() {
-        return new ArrayList<>() {
-            {
-                add(new Car("Lada", 2020, "Vesta"));
-                add(new Car("BMW", 2004, "M3"));
-                add(new Car("Suzuki", 2013, "Grand Vitara"));
-                add(new Car("Porsche", 2017, "Panamera"));
-                add(new Car("Audi", 1995, "A8"));
-            }
-        };
+    private final CarService carService;
+
+    public CarController(CarService carService) {
+        this.carService = carService;
     }
 
     @GetMapping(value = "/cars")
     public String printCars(@RequestParam(required = false) Integer count, ModelMap model) {
         if (count == null) {
-            model.addAttribute("cars", getCars());
+            model.addAttribute("cars", carService.getCars());
         } else {
-            model.addAttribute("cars", CarService.getCountOfCars(count));
+            model.addAttribute("cars", carService.getCountOfCars(count));
         }
         return "cars";
     }
